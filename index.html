@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Свадебное приглашение</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Music Toggle -->
+  <button id="music-toggle" class="music-btn" aria-label="Включить/выключить музыку">
+    <svg id="music-icon-on" class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+    </svg>
+    <svg id="music-icon-off" class="music-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+      <line x1="1" y1="1" x2="23" y2="23" stroke-width="2.5"/>
+    </svg>
+  </button>
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Section 1: Hero -->
+  <section class="section hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-subtitle">Мы женимся!</p>
+      <h1 class="hero-names">Александр <span class="amp">&amp;</span> Елена</h1>
+      <p class="hero-date">15 августа 2026</p>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><span id="cd-days">0</span><small>дней</small></div>
+        <div class="countdown-item"><span id="cd-hours">0</span><small>часов</small></div>
+        <div class="countdown-item"><span id="cd-minutes">0</span><small>минут</small></div>
+        <div class="countdown-item"><span id="cd-seconds">0</span><small>секунд</small></div>
+      </div>
+      <a href="#invitation" class="scroll-arrow" aria-label="Прокрутить вниз">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 2: Invitation -->
+  <section class="section" id="invitation">
+    <div class="container">
+      <div class="leaf-divider">&#127807;</div>
+      <h2>Дорогие друзья и&nbsp;родные!</h2>
+      <p class="invitation-text">
+        Мы рады сообщить вам, что в&nbsp;нашей жизни произойдёт важное и&nbsp;радостное событие&nbsp;—
+        мы решили соединить наши сердца и&nbsp;стать одной семьёй.
+      </p>
+      <p class="invitation-text">
+        Будет честью для нас, если вы разделите с&nbsp;нами этот прекрасный день.
+        Ваше присутствие станет лучшим подарком и&nbsp;сделает наш праздник по&#8209;настоящему незабываемым.
+      </p>
+      <p class="invitation-text signature">С любовью, Александр и&nbsp;Елена</p>
+    </div>
+  </section>
+
+  <!-- Section 3: Details -->
+  <section class="section section-alt" id="details">
+    <div class="container">
+
+      <div class="details-card">
+        <h3>&#127860; Меню</h3>
+        <p>Вас ждёт изысканный фуршет и&nbsp;банкет с&nbsp;авторскими блюдами от&nbsp;шеф-повара.
+           Если у&nbsp;вас есть аллергии или особые пожелания по&nbsp;питанию, пожалуйста, сообщите нам заранее.</p>
+      </div>
+
+      <div class="details-card">
+        <h3>&#127873; Подарки</h3>
+        <p>Лучший подарок&nbsp;— это ваше присутствие и&nbsp;тёплые слова.
+           Но если вы хотите порадовать нас чем&#8209;то ещё, мы будем благодарны за&nbsp;вклад в&nbsp;наше
+           свадебное путешествие.</p>
+      </div>
+
+      <div class="details-card">
+        <h3>&#128221; Примечания</h3>
+        <p>Дресс-код: нарядная одежда в&nbsp;светлых тонах. Просим воздержаться от&nbsp;белого цвета&nbsp;—
+           его мы оставим для невесты. Будьте готовы к&nbsp;весёлым конкурсам и&nbsp;танцам до&nbsp;утра!</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 4: RSVP -->
+  <section class="section" id="rsvp">
+    <div class="container">
+      <div class="leaf-divider">&#127807;</div>
+      <h2>Подтверждение присутствия</h2>
+      <p class="invitation-text">Пожалуйста, подтвердите ваше присутствие до&nbsp;1&nbsp;августа&nbsp;2026&nbsp;года, чтобы мы могли подготовить всё наилучшим образом.</p>
+
+      <div class="calendar-widget" id="calendar-widget"></div>
+
+      <button class="btn" id="rsvp-open-btn">Подтвердить присутствие</button>
+
+      <div class="rsvp-form-overlay hidden" id="rsvp-overlay">
+        <div class="rsvp-form-card">
+          <button class="rsvp-close" id="rsvp-close">&times;</button>
+          <h3>Подтверждение</h3>
+          <form id="rsvp-form">
+            <label>
+              <span>Фамилия Имя Отчество</span>
+              <input type="text" name="fullname" required placeholder="Иванов Иван Иванович">
+            </label>
+            <label>
+              <span>Номер телефона</span>
+              <input type="tel" name="phone" required placeholder="+7 (999) 123-45-67">
+            </label>
+            <button type="submit" class="btn">Отправить</button>
+          </form>
+          <p class="rsvp-success hidden" id="rsvp-success">Спасибо! Мы получили ваше подтверждение&nbsp;&#127881;</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Venue -->
+  <section class="section section-alt" id="venue">
+    <div class="container">
+      <div class="leaf-divider">&#127807;</div>
+      <h2>Место проведения</h2>
+      <p class="invitation-text">Ресторан «Зелёная Роща»</p>
+      <p class="venue-address">г. Москва, ул. Цветочная, д.&nbsp;12</p>
+
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.3715!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIxLjAiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <a href="https://www.google.com/maps/dir/?api=1&destination=55.7558,37.6173" target="_blank" rel="noopener" class="btn">
+        &#128205; Построить маршрут
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 6: Photos -->
+  <section class="section" id="photos">
+    <div class="container">
+      <div class="leaf-divider">&#127807;</div>
+      <h2>Фотографии</h2>
+      <div class="photo-cards">
+        <div class="photo-card">
+          <div class="photo-card-icon">&#128247;</div>
+          <h3>Фото со свадьбы</h3>
+          <p>Профессиональные фотографии будут доступны после свадьбы.</p>
+          <span class="photo-link-placeholder">Ссылка появится после свадьбы</span>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card-icon">&#128248;</div>
+          <h3>Ваши фотографии</h3>
+          <p>Будем рады, если вы поделитесь своими снимками с&nbsp;нашего праздника!</p>
+          <a href="https://drive.google.com/drive/folders/FOLDER_ID?usp=sharing" target="_blank" rel="noopener" class="btn btn-sm">
+            Загрузить фото
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Final -->
+  <section class="section hero final-section" id="final">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h2>Ждём вас!</h2>
+      <p class="hero-date">15 августа 2026</p>
+      <p class="final-heart">&#128154;</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>С любовью, А&amp;Е &bull; 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
